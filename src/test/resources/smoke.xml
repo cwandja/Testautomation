@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="smoke" verbose="1">
+    <test name="Smoke Tests Suite">
+        <groups>
+            <run>
+                <include name="smoke" />
+            </run>
+        </groups>
+        <packages>
+            <package name="de.funke.qa.*" />
+        </packages>
+    </test>
+</suite>
