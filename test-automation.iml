@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_6">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -31,6 +31,8 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.mozilla:rhino:1.7R5" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: xerces:xercesImpl:2.9.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: xml-apis:xml-apis:1.0.b2" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-log4j12:1.6.1" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.6.1" level="project" />
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.16" level="project" />
     <orderEntry type="library" name="Maven: com.jcabi:jcabi-w3c:2.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpmime:4.3" level="project" />
@@ -41,7 +43,6 @@
     <orderEntry type="library" name="Maven: javax.validation:validation-api:1.1.0.Final" level="project" />
     <orderEntry type="library" name="Maven: com.jcabi:jcabi-http:1.10.2" level="project" />
     <orderEntry type="library" name="Maven: com.jcabi:jcabi-log:0.15.1" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.5" level="project" />
     <orderEntry type="library" name="Maven: com.jcabi:jcabi-aspects:0.20.1" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjrt:1.8.2" level="project" />
     <orderEntry type="library" name="Maven: com.jcabi:jcabi-manifests:1.1" level="project" />

@@ -1,8 +1,5 @@
 package de.funke.qa;
 
-import com.jcabi.w3c.Defect;
-import com.jcabi.w3c.ValidationResponse;
-import com.jcabi.w3c.ValidatorBuilder;
 import nu.validator.messages.MessageEmitter;
 import nu.validator.messages.MessageEmitterAdapter;
 import nu.validator.messages.TextMessageEmitter;
@@ -10,6 +7,7 @@ import nu.validator.servlet.imagereview.ImageCollector;
 import nu.validator.source.SourceCode;
 import nu.validator.validation.SimpleDocumentValidator;
 import nu.validator.xml.SystemErrErrorHandler;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.xml.sax.InputSource;
@@ -17,7 +15,8 @@ import org.xml.sax.InputSource;
 import java.io.*;
 import java.net.URL;
 
-public class Base {
+public class BaseTest {
+    static final Logger logger = Logger.getLogger(BaseTest.class);
     private int numOfError;
 
     public String getHTML(String urlToRead) {
@@ -36,7 +35,7 @@ public class Base {
 
             // write the output to stdout
             while ((line = reader.readLine()) != null) {
-                result += line;
+                result += line + "\n";
             }
 
             // close our reader
@@ -47,8 +46,9 @@ public class Base {
         return result;
     }
 
-    public boolean validateHtml(String url) {
+    public void validateHtml(String url) {
         String htmlContent = getHTML(url);
+        // String htmlContent = "<!-- b2 -->";
         /*String htmlContent = "<html>\n" +
                 "<head>\n" +
                 "  <title>This is bad HTML</title>\n" +
@@ -74,23 +74,13 @@ public class Base {
             validator.setUpValidatorAndParsers(errorHandler, true, false);
             validator.checkHtmlInputSource(new InputSource(in));
             numOfError = errorHandler.getErrors();
+            errorHandler.end("", "");
+            if (0 != numOfError) {
+                Assert.fail("\n " + out.toString());
+            }
         } catch (Exception e) {
             throw new SkipException("Skipping - There was an exception: please look at your code: " + e.toString());
         }
-        return 0 == numOfError;
-    }
-
-    public void w3cValidateHTML(String url) {
-        String htmlContent = getHTML(url);
-        //String htmlContent = "<html><body><p>Hello, world!</p></body></html>";
-        ValidationResponse response = null;
-        try {
-            response = new ValidatorBuilder().html().validate(htmlContent);
-        } catch (IOException e) {
-            throw new SkipException("Skipping - There was an exception: please look at your code: " + e.toString());
-        }
-        if (!response.valid())
-            Assert.fail(response.errors().toString());
     }
 
 }
