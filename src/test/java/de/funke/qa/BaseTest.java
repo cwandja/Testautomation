@@ -15,7 +15,7 @@ import org.xml.sax.InputSource;
 import java.io.*;
 import java.net.URL;
 
-public class BaseTest {
+public class BaseTest extends Base{
     static final Logger logger = Logger.getLogger(BaseTest.class);
     private int numOfError;
 
