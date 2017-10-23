@@ -16,7 +16,7 @@ public class Base {
         String baseUrl=null;
         String prefix = "http://";
         String suffix = ".de";
-        String domain = Publications.valueOf(publication.toUpperCase()).getDomain();
+        String domain = Publications.valueOf(publication.toUpperCase().replace("-", "_")).getDomain();
         switch (Stage.valueOf(stage.toUpperCase())) {
             case UAT:
                 baseUrl = prefix+"uat."+domain+suffix;
