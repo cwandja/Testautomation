@@ -1,8 +1,5 @@
 package de.funke.qa;
 
-import com.codeborne.selenide.WebDriverRunner;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeSuite;
 import com.codeborne.selenide.Configuration;
 
@@ -35,10 +32,5 @@ public class Base {
     public void beforeSuite() {
         Configuration.baseUrl = getBaseUrl();
         Configuration.browser = System.getProperty("selenide.browser", "chrome");
-
-/*        WebDriver.Window window = WebDriverRunner.getWebDriver().manage().window();
-        window.maximize();
-        Dimension size = window.getSize();
-        System.out.println("Display size = " + size.getWidth() + "x" + size.getHeight());*/
     }
 }

@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" verbose="1">
+    <test name="Test">
+        <method-selectors>
+            <method-selector>
+                <script language="beanshell">
+                    <![CDATA[whatGroup = System.getProperty("groupToRun");
+                groups.containsKey(whatGroup);
+                ]]>
+                </script>
+            </method-selector>
+        </method-selectors>
+        <packages>
+            <package name="de.funke.qa.*" />
+        </packages>
+    </test>
+</suite>
