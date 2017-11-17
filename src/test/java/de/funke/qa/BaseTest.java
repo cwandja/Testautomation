@@ -27,7 +27,6 @@ import java.util.Set;
 
 public class BaseTest extends Base{
     static final Logger logger = Logger.getLogger(BaseTest.class);
-    private int numOfError;
 
     public String getContentFile(String urlToRead) {
         String line;
@@ -37,18 +36,14 @@ public class BaseTest extends Base{
         try {
             url = new URL(urlToRead);
 
-            // open the url stream, wrap it an a few "readers"
             BufferedReader reader = null;
 
             reader = new BufferedReader(new InputStreamReader(url.openStream()));
 
-
-            // write the output to stdout
             while ((line = reader.readLine()) != null) {
                 result += line + "\n";
             }
 
-            // close our reader
             reader.close();
         } catch (IOException e) {
             throw new SkipException("Skipping - There was an exception: please look at your code: " + e.toString());
@@ -62,15 +57,12 @@ public String getCssLink(String htmlUrl) {
     } catch (IOException e) {
         e.printStackTrace();
     }
-    Elements links = document.select("link");
-    String cssUrl = "";
-    for (Element link : links) {
-        cssUrl = link.absUrl("href");
-    }
-    return cssUrl;
+    Element header = document.head();
+    Element firstCssUrl = header.getElementsByAttributeValue("rel", "stylesheet").first();
+    return firstCssUrl.absUrl("href");
 }
-    public void validateCss(String url) {
-        String cssContent = getContentFile(url);
+    public void validateCss(String cssUrl) {
+        String cssContent = getContentFile(cssUrl);
         //String css = "body { font-family: Arial; }";
         ValidationResponse response =
                 null;
@@ -90,8 +82,8 @@ public String getCssLink(String htmlUrl) {
         assert response.valid();
     }
 
-    public void validateHtml(String url) {
-        String htmlContent = getContentFile(url);
+    public void validateHtml(String htmlUrl) {
+        String htmlContent = getContentFile(htmlUrl);
         // String htmlContent = "<!-- b2 -->";
         /*String htmlContent = "<html>\n" +
                 "<head>\n" +
@@ -129,6 +121,12 @@ public String getCssLink(String htmlUrl) {
         } catch (Exception e) {
             throw new SkipException("Skipping - There was an exception: please look at your code: " + e.toString());
         }
+
+    }
+
+    public void validateHtmlCss(String htmlUrl){
+        validateHtml(htmlUrl);
+        validateCss(getCssLink(htmlUrl));
     }
 
 }

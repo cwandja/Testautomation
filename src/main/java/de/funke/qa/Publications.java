@@ -1,17 +1,19 @@
 package de.funke.qa;
 
 public enum Publications {
-    HAO("hao", "abendblatt"),
-    BZV_BZ("bzv-bz", "braunschweiger-zeitung"),
-    NRW_WAZ("nrw-waz", "waz");
+    HAO("hao", "abendblatt", true),
+    BZV_BZ("bzv-bz", "braunschweiger-zeitung", false),
+    NRW_WAZ("nrw-waz", "waz", false);
 
 
     private final String name;
     private final String domain;
+    private final boolean isHttpsForced;
 
-    Publications(String name, String domain) {
+    Publications(String name, String domain, boolean isHttpsForced) {
         this.name = name;
         this.domain = domain;
+        this.isHttpsForced = isHttpsForced;
     }
 
     public String getName() {
@@ -20,5 +22,9 @@ public enum Publications {
 
     public String getDomain() {
         return domain;
+    }
+
+    public boolean isHttpsForced() {
+        return isHttpsForced;
     }
 }

@@ -8,12 +8,13 @@ public class Base {
     public static final String HTTPS_PROTOCOL = "https://";
 
     protected String getBaseUrl() {
-        String publication = System.getProperty("publication", "hao");
+
+        Publications publication = Publications.valueOf(System.getProperty("publication", "hao").toUpperCase().replace("-", "_"));
         String stage = System.getProperty("stage", "prod");
         String baseUrl=null;
-        String prefix = "http://";
+        String prefix = publication.isHttpsForced() ? HTTPS_PROTOCOL : HTTP_PROTOCOL;
         String suffix = ".de";
-        String domain = Publications.valueOf(publication.toUpperCase().replace("-", "_")).getDomain();
+        String domain = publication.getDomain();
         switch (Stage.valueOf(stage.toUpperCase())) {
             case UAT:
                 baseUrl = prefix+"uat."+domain+suffix;

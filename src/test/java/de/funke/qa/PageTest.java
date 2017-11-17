@@ -6,19 +6,16 @@ import org.testng.annotations.Test;
 
 
 public class PageTest extends BaseTest {
-    //Homepage, Rubrik, Artikel
+    //ausgewählte Seiten, die soviel Variante wie möglich abdeckt - alle publikationen
     @Test(groups = {"responsive", "cross-browser", "smoke"})
-    public void verifyDesignLayoutPage() {
-        String url = Configuration.baseUrl;
-        url = url.replace(HTTP_PROTOCOL, HTTPS_PROTOCOL);
-           validateHtml(url);
-        //validateCss("https://www.abendblatt.de/resources/1507120781/css/styles.min.css");
-        //validateCss(url);
+    public void verifyHtmlCssCode() {
+           validateHtmlCss(Configuration.baseUrl);
     }
 
-    @Test(groups = {"access", "smoke"})
-    public void verifyBrokenLinks() {
-
+    //Homepage, Rubrik, Artikel  - alle publikationen
+    @Test(groups = {"content-type"})
+    public void verifyContentType() {
+        validateHtmlCss(Configuration.baseUrl);
     }
 
 
