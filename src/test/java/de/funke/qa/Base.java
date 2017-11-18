@@ -9,7 +9,7 @@ public class Base {
 
     protected String getBaseUrl() {
 
-        Publications publication = Publications.valueOf(System.getProperty("publication", "hao").toUpperCase().replace("-", "_"));
+        Publication publication = Publication.valueOf(System.getProperty("publication", "hao").toUpperCase().replace("-", "_"));
         String stage = System.getProperty("stage", "prod");
         String baseUrl=null;
         String prefix = publication.isHttpsForced() ? HTTPS_PROTOCOL : HTTP_PROTOCOL;

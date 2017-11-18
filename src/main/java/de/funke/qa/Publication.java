@@ -1,6 +1,6 @@
 package de.funke.qa;
 
-public enum Publications {
+public enum Publication {
     HAO("hao", "abendblatt", true),
     BZV_BZ("bzv-bz", "braunschweiger-zeitung", false),
     NRW_WAZ("nrw-waz", "waz", false);
@@ -10,7 +10,7 @@ public enum Publications {
     private final String domain;
     private final boolean isHttpsForced;
 
-    Publications(String name, String domain, boolean isHttpsForced) {
+    Publication(String name, String domain, boolean isHttpsForced) {
         this.name = name;
         this.domain = domain;
         this.isHttpsForced = isHttpsForced;
